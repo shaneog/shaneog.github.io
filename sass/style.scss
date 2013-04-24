@@ -34,9 +34,9 @@ h1 {
 }
 .avatar {
     @include box-shadow(0 0 0px 3px #fff, 0 0 0 4px #ccc, 0 4px 6px #333);
-    @include border-radius(50px); // half the avatar size
-    width: 100px;
-    height: 100px;
+    @include border-radius(100px); // half the avatar size
+    width: 200px;
+    height: 200px;
 }
 .footer {
     p {
@@ -124,7 +124,7 @@ h1 {
 /* Twitter */
 .icon-twitter {color: #00a0d1}
 .icon-twitter:hover {background:#00a0d1}
-/* Instagram */
+/* LinkedIn */
 .icon-linkedin {color: #4875b4}
 .icon-linkedin:hover {background: #4875b4}
 /* Facebook */
