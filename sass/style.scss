@@ -28,6 +28,10 @@ h1 {
 .header {
     padding: 10em 0 14em;
 
+    @media screen and (max-width: 320px) {
+        padding: 3em 0 6em;
+    }
+
     h1 {
         font-style: italic;
     }
