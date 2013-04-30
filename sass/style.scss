@@ -21,6 +21,27 @@ h1 {
     font-size: 2.25em;
     padding: 0 1em;
 }
+// Colour Bar
+.redBorder,
+.greenBorder,
+.yellowBorder,
+.blueBorder {
+    width: 25%;
+    float: left;
+    height: 0.4em;
+}
+.redBorder {
+    background-color: #e74c3c;
+}
+.greenBorder {
+    background-color: #1abc9c;
+}
+.yellowBorder {
+    background-color: #f1c40f;
+}
+.blueBorder {
+    background-color: #3498db;
+}
 .header,
 .footer {
     background: #f7f7f7;
