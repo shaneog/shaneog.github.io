@@ -1,6 +1,18 @@
 @import "compass/reset";
 @import "compass/css3";
 
+// Social Link Colors
+$facebook:    #3b5998;
+$github:      #000000;
+$linkedin:    #4875b4;
+$google-plus: #db4a39;
+$twitter:     #00a0d1;
+
+html, 
+body {
+    background: #f7f7f7;
+}
+
 // Basic Page Styles
 body {
     text-align: center;
@@ -42,10 +54,7 @@ h1 {
 .blueBorder {
     background-color: #3498db;
 }
-.header,
-.footer {
-    background: #f7f7f7;
-}
+
 .header {
     padding: 8em 0 10em;
 
@@ -69,30 +78,6 @@ h1 {
         padding: 0 1em;
     }
 }
-// Icon fonts
-@font-face {
-    font-family: 'icomoon';
-    src:url('../fonts/icomoon.eot');
-    src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.woff') format('woff'),
-        url('../fonts/icomoon.ttf') format('truetype'),
-        url('../fonts/icomoon.svg#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-// Shared styles
-.icon-facebook:before,
-.icon-twitter:before,
-.icon-github:before,
-.icon-google-plus:before,
-.icon-linkedin:before{
-    font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-}
 .social {
     margin:2em 0;
     font-family: Helvetica, Arial, sans-serif;
@@ -105,7 +90,7 @@ h1 {
 
         &:hover {
             @include scale(1.25);
-            color: white;
+            .icon { color: white; }
         }
 
         &:before {
@@ -119,7 +104,7 @@ h1 {
         a {
             display: block;
             color: inherit;
-            padding: 2.5em 1em 1em;
+            padding: 1em;
             width: 6em;
             // allow truncation if needed
             overflow: hidden;
@@ -129,35 +114,51 @@ h1 {
     }
 }
 
-// Individual characters
-.icon-facebook:before {
-    content: "\e000";
+// Icon fonts
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot');
+    src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.woff') format('woff'),
+        url('../fonts/icomoon.ttf') format('truetype'),
+        url('../fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
-.icon-github:before {
-    content: "\e001";
+
+.icon {
+    &::before {
+        display: block;
+        font-family: 'icomoon';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+    }
+    &.facebook {
+        color: $facebook;
+        &::before { content: "\e000"; }
+        &:hover { background-color: $facebook; }
+    }
+    &.github {
+        color: $github;
+        &::before { content: "\e001"; }
+        &:hover { background-color: $github; }
+    }
+    &.linkedin {
+        color: $linkedin;
+        &::before { content: "\e002"; }
+        &:hover { background-color: $linkedin; }
+    }
+    &.google-plus {
+        color: $google-plus;
+        &::before { content: "\e003"; }
+        &:hover { background-color: $google-plus; }
+    }
+    &.twitter {
+        color: $twitter;
+        &::before { content: "\e004"; }
+        &:hover { background-color: $twitter; }
+    }
 }
-.icon-linkedin:before {
-    content: "\e002";
-}
-.icon-google-plus:before {
-    content: "\e003";
-}
-.icon-twitter:before {
-    content: "\e004";
-}
-// Brand Colours
-/* Twitter */
-.icon-twitter {color: #00a0d1}
-.icon-twitter:hover {background:#00a0d1}
-/* LinkedIn */
-.icon-linkedin {color: #4875b4}
-.icon-linkedin:hover {background: #4875b4}
-/* Facebook */
-.icon-facebook {color: #3b5998}
-.icon-facebook:hover {background: #3b5998}
-/* Google Plus */
-.icon-google-plus {color: #db4a39}
-.icon-google-plus:hover {background: #db4a39}
-/* GitHub */
-.icon-github {color: #000000}
-.icon-github:hover {background: #000000}
