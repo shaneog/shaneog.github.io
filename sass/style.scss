@@ -8,7 +8,7 @@ $linkedin:    #4875b4;
 $google-plus: #db4a39;
 $twitter:     #00a0d1;
 
-html, 
+html,
 body {
     background: #f7f7f7;
 }
@@ -56,10 +56,10 @@ h1 {
 }
 
 .header {
-    padding: 8em 0 10em;
+    padding: 7em 0 6em;
 
     @media screen and (max-width: 320px) {
-        padding: 3em 0 6em;
+        padding: 3em 0 4em;
     }
 
     h1 {
