@@ -5,7 +5,6 @@
 $facebook:    #3b5998;
 $github:      #000000;
 $linkedin:    #4875b4;
-$google-plus: #db4a39;
 $twitter:     #00a0d1;
 
 html,
@@ -150,11 +149,6 @@ h1 {
         color: $linkedin;
         &::before { content: "\e002"; }
         &:hover { background-color: $linkedin; }
-    }
-    &.google-plus {
-        color: $google-plus;
-        &::before { content: "\e003"; }
-        &:hover { background-color: $google-plus; }
     }
     &.twitter {
         color: $twitter;
