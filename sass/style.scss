@@ -2,11 +2,10 @@
 @import "compass/css3";
 
 // Social Link Colors
-$facebook:    #3b5998;
-$github:      #000000;
-$linkedin:    #4875b4;
-$google-plus: #db4a39;
-$twitter:     #00a0d1;
+$facebook:    #4172B8;
+$github:      #181717;
+$linkedin:    #0077B5;
+$twitter:     #1DA1F2;
 
 html,
 body {
@@ -150,11 +149,6 @@ h1 {
         color: $linkedin;
         &::before { content: "\e002"; }
         &:hover { background-color: $linkedin; }
-    }
-    &.google-plus {
-        color: $google-plus;
-        &::before { content: "\e003"; }
-        &:hover { background-color: $google-plus; }
     }
     &.twitter {
         color: $twitter;
