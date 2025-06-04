@@ -1,43 +1,830 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Shane O'Grady</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="p:domain_verify" content="28e9cc32128c3c6a1a8630d5b94ac92c"/>
-<!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link href="stylesheets/style.css" type="text/css" rel="stylesheet" >
-<link href="http://fonts.googleapis.com/css?family=Bitter:400,400italic" rel="stylesheet" type="text/css" >
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shane O'Grady">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="p:domain_verify" content="28e9cc32128c3c6a1a8630d5b94ac92c"/>
+    
+    <title>Shane O'Grady</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" media="print">
+    
+    <!-- Preload the most efficient format (AVIF) with proper attributes -->
+    <link rel="preload" href="images/avatar-200w.avif" as="image" type="image/avif" fetchpriority="high">
+    <!-- Preload the WebP fallback -->
+    <link rel="preload" href="images/avatar-200w.webp" as="image" type="image/webp" imagesrcset="images/avatar-200w.webp 200w, images/avatar-400w.webp 400w" imagesizes="200px">
+    <!-- Preload the JPEG fallback -->
+    <link rel="preload" href="images/avatar-200w.jpg" as="image" fetchpriority="high" imagesrcset="images/avatar-200w.jpg 200w, images/avatar-400w.jpg 400w" imagesizes="200px">
+    
+    <!-- Load fonts with optimized display -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=optional" media="print" onload="this.media='all'">
+    
+    <!-- Fallback for browsers that don't support preload -->
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+    </noscript>
+    
+    <!-- Inline Critical CSS - Prevent FOUC -->
+    <style id="critical-css">
+        /* Hide content until styles are loaded */
+        .no-js #main-content { opacity: 0; }
+        /* Critical CSS - Inlined in <head> */
+        /* Base palette (blue) */
+        :root {
+            /* Core colors */
+            --palette-primary: #2563eb;
+            --palette-primary-hover: #1d4ed8;
+            --palette-bg: #ffffff;
+            --palette-text: #1f2937;
+            --palette-text-light: #6b7280;
+            --palette-card: #f9fafb;
+            --palette-border: #e5e7eb;
+            --palette-shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Green palette - light */
+        :root[data-palette="green"] {
+            --palette-primary: #059669;
+            --palette-primary-hover: #047857;
+            --palette-bg: #f0fdf4;
+            --palette-text: #1f2937;
+            --palette-text-light: #6b7280;
+            --palette-card: #dcfce7;
+            --palette-border: #bbf7d0;
+            --palette-shadow: rgba(5, 150, 105, 0.1);
+        }
+        
+        /* Dark theme - base */
+        :root[data-theme="dark"] {
+            --palette-bg: #111827;
+            --palette-text: #f9fafb;
+            --palette-text-light: #9ca3af;
+            --palette-card: #1f2937;
+            --palette-border: #374151;
+            --palette-shadow: rgba(0, 0, 0, 0.3);
+            --palette-primary: #60a5fa;
+            --palette-primary-hover: #3b82f6;
+        }
+        
+        /* Dark theme - green palette */
+        :root[data-theme="dark"][data-palette="green"] {
+            --palette-primary: #34d399;
+            --palette-primary-hover: #10b981;
+            --palette-bg: #064e3b;
+            --palette-card: #065f46;
+            --palette-border: #047857;
+            --palette-text: #f9fafb;
+            --palette-text-light: #9ca3af;
+        }
 
-  ga('create', 'UA-4103781-1', 'ogrady.ie');
-  ga('send', 'pageview');
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-</script>
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--palette-text);
+            background-color: var(--palette-bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Ensure content is visible while fonts load */
+        @supports (font-variation-settings: normal) {
+            body { 
+                font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1;
+        }
+
+        /* Header styles */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--palette-primary);
+            box-shadow: var(--palette-shadow);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-top: 0.25rem;
+        }
+
+        .social-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* Prevent layout shifts */
+            display: inline-block;
+            min-width: 0.1px;
+            contain: content;
+        }
+        
+        .social-section {
+            margin: 2rem 0;
+            contain: layout;
+        }
+        
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0 0;
+            contain: layout;
+            will-change: transform;
+            grid-auto-rows: minmax(3.5rem, auto);
+        }
+        
+        .social-links li {
+            min-height: 3.5rem;
+            contain: layout;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid var(--palette-border);
+            border-radius: var(--border-radius);
+            transition: all 0.2s ease;
+            color: var(--palette-text);
+            background: var(--palette-card);
+            text-decoration: none;
+            font-weight: 500;
+            min-height: 3.5rem;
+            box-sizing: border-box;
+            min-width: 10rem;
+            width: 100%;
+            height: 100%;
+            contain: content;
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+        
+        .social-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+            min-width: 1.5rem;
+            min-height: 1.5rem;
+            contain: strict;
+            color: inherit; /* Ensure icon inherits text color */
+        }
+
+        /* Konami mode styles */
+        .konami-mode {
+            animation: rainbow 2s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        /* Theme toggle */
+        :root {
+            --transition-duration: 0.2s;
+            --transition-timing: ease;
+            --transition-props: transform var(--transition-duration) var(--transition-timing),
+                              box-shadow var(--transition-duration) var(--transition-timing),
+                              border-color var(--transition-duration) var(--transition-timing);
+        }
+
+        /* Theme toggle button styles */
+        .theme-toggle {
+            /* CSS custom properties for easy theming and adjustments */
+            --size: 2.5rem;            /* Size of the toggle button */
+            --offset: 1rem;            /* Distance from viewport edges */
+            --border-width: 2px;        /* Border width for the toggle */
+            --shadow-offset: 0 2px 4px; /* Default shadow */
+            --hover-shadow-offset: 0 4px 12px; /* Hover state shadow */
+            --translate-y: -2px;       /* Hover lift effect */
+            
+            /* Fixed positioning to keep it in view */
+            position: fixed;
+            top: var(--offset);
+            right: var(--offset);
+            
+            /* Dimensions */
+            width: var(--size);
+            height: var(--size);
+            border: var(--border-width) solid transparent;
+            padding: 0;
+            margin: 0;
+            
+            /* Visual styling */
+            background: transparent;
+            cursor: pointer;
+            color: var(--palette-text);
+            border-radius: 50%;
+            box-shadow: var(--shadow-offset) var(--palette-shadow);
+            
+            /* Center icon */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            /* Accessibility and interaction */
+            -webkit-appearance: none;
+            appearance: none;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            
+            /* Performance optimizations */
+            contain: layout paint style; /* Limits browser recalculations */
+            transition: var(--transition-props);
+            will-change: transform, box-shadow, border-color; /* Hints for browser optimizations */
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden; /* Safari fix */
+            
+            /* Ensure it's above other content */
+            z-index: 100;
+        }
+
+        /* Hover state - subtle lift and shadow effect */
+        .theme-toggle:hover {
+            border-color: var(--palette-primary);
+            transform: translateY(var(--translate-y));
+            box-shadow: var(--hover-shadow-offset) var(--palette-shadow);
+        }
+        
+        /* Active/pressed state - removes transform to create a 'pressed' effect */
+        .theme-toggle:active {
+            transform: translateY(0) !important;
+        }
+
+        /* Container for theme icons (sun/moon) */
+        .theme-icon-container {
+            position: relative;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin: 0 auto;
+        }
+
+        .theme-icon {
+            position: absolute;
+            width: 1.5rem;
+            height: 1.5rem;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            /* Center the icon */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .sun-icon {
+            opacity: 0;
+        }
+
+        [data-theme="dark"] .moon-icon {
+            opacity: 0;
+        }
+
+        [data-theme="dark"] .sun-icon {
+            opacity: 1;
+        }
+
+        .highlight {
+            color: var(--palette-primary);
+            font-weight: 600;
+            /* Use position relative instead of inline-block to maintain text flow */
+            position: relative;
+            /* Ensure it doesn't affect line height */
+            line-height: inherit;
+            /* Smooth color transition */
+            transition: color 0.3s ease, border-color 0.3s ease;
+            /* Add subtle underline effect */
+            text-decoration: none;
+            /* Reserve space for the border to prevent layout shift */
+            border-bottom: 2px solid transparent;
+            /* Add a small negative margin to account for the border */
+            margin: 0 -1px;
+            padding: 0 1px;
+            /* Prevent line breaks inside the highlight */
+            white-space: nowrap;
+        }
+        
+        .highlight:hover {
+            border-bottom-color: var(--palette-primary);
+        }
+        </style>
+    
+    <!-- Load non-critical CSS without blocking render -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    
+    <!-- Load fonts without blocking render -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    
+    <!-- Critical theme initialization -->
+    <script>
+    // Immediately apply theme to prevent FOUC
+    (function() {
+        function initTheme() {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const autoTheme = localStorage.getItem('auto-theme') !== 'false';
+                
+                // Apply theme immediately
+                if (savedTheme === 'dark' || (autoTheme && prefersDark)) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    document.body.classList.add('dark-theme');
+                }
+                
+                // Mark as bfcache if restored from cache
+                window.addEventListener('pageshow', function(event) {
+                    if (event.persisted) {
+                        document.documentElement.classList.add('is-bfcache');
+                    }
+                });
+            } catch (e) {
+                console.error('Error in critical theme initialization:', e);
+            }
+        }
+        
+        // Run after DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTheme);
+        } else {
+            initTheme();
+        }
+        
+        // Clean up any references that might prevent bfcache
+        window.addEventListener('pagehide', function() {
+            // Clean up any timers or animations
+            window.cancelAnimationFrame = window.cancelAnimationFrame || 
+                window.mozCancelAnimationFrame || 
+                window.webkitCancelAnimationFrame || 
+                window.msCancelAnimationFrame || 
+                window.oCancelAnimationFrame || 
+                function(id) { clearTimeout(id); };
+        }, { passive: true });
+        
+    })();
+    </script>
 </head>
-<body>
-    <div class="yellowBorder"></div>
-    <div class="redBorder"></div>
-    <div class="greenBorder"></div>
-    <div class="blueBorder"></div>
-<header class="header">
-    <img src="images/avatar.jpg" width="200" height="200" class="avatar" />
-    <h1>Hello, I'm Shane O'Grady.</h1>
-</header>
-<footer class="footer">
-    <h1>Find Me on the Web</h1>
-    <p>You can contact or follow me via any of these services:</p>
-    <ul class="social">
-        <li id="social-facebook"><a class="icon facebook" href="https://www.facebook.com/shane.ogrady">Facebook</a></li>
-        <li id="social-twitter"><a class="icon twitter" href="https://twitter.com/ShaneOG">Twitter</a></li>
-        <li id="social-github"><a class="icon github" href="https://github.com/shaneog">GitHub</a></li>
-        <li id="social-linkedin"><a class="icon linkedin" href="http://ie.linkedin.com/in/shaneog">LinkedIn</a></li>
-    </ul>
-</footer>
+<body class="no-js">
+    <script>document.body.classList.remove('no-js');</script>
+    <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <div class="theme-icon-container">
+            <svg class="theme-icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+        </div>
+    </button>
+    
+    <main id="main-content" class="container" style="content-visibility: auto; contain-intrinsic-size: 1000px;">
+        <header class="header" style="content-visibility: auto;">
+            <div class="avatar-container" style="content-visibility: auto;">
+                <picture>
+                    <!-- AVIF - Best compression, newest browsers -->
+                    <source 
+                        type="image/avif" 
+                        srcset="
+                            images/avatar-200w.avif 200w,
+                            images/avatar-400w.avif 400w
+                        "
+                        sizes="200px"
+                        width="200"
+                        height="200"
+                    >
+                    <!-- WebP fallback - Good compression, wider support -->
+                    <source 
+                        type="image/webp" 
+                        srcset="
+                            images/avatar-200w.webp 200w,
+                            images/avatar-400w.webp 400w
+                        "
+                        sizes="200px"
+                        width="200"
+                        height="200"
+                    >
+                    <!-- JPEG fallback - Widest support -->
+                    <img 
+                        src="images/avatar-200w.jpg" 
+                        srcset="
+                            images/avatar-200w.jpg 200w,
+                            images/avatar-400w.jpg 400w
+                        " 
+                        alt="Shane O'Grady" 
+                        width="200" 
+                        height="200" 
+                        class="avatar"
+                        decoding="async"
+                        loading="eager"
+                        fetchpriority="high"
+                        style="width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover;"
+                    >
+                </picture>
+            </div>
+            <h1>Hello, I'm <span class="highlight">Shane O'Grady</span>.</h1>
+        </header>
+        
+        <section class="social-section" style="contain: layout; content-visibility: auto;">
+            <h2>Find Me on the Web</h2>
+            <ul class="social-links" style="will-change: transform;">
+                <li>
+                    <a href="https://www.linkedin.com/in/shaneog" class="social-link linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true" focusable="false">
+                            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.93 2.06 2.06 0 1.14-.93 2.07-2.06 2.07zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0h-.01z"/>
+                        </svg>
+                        <span class="social-text">LinkedIn</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/shaneog" class="social-link github" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" aria-hidden="true" focusable="false">
+                            <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-2 1.03-2.7-.1-.25-.45-1.3.1-2.7 0 0 .84-.27 2.75 1.03.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.4.2 2.45.1 2.7.64.7 1.03 1.6 1.03 2.7 0 3.83-2.34 4.68-4.56 4.93.36.31.68.92.68 1.85V19c0 .27.16.58.67.48C19.14 20.16 22 16.4 22 12c0-5.52-4.48-10-10-10z"/>
+                        </svg>
+                        <span class="social-text">GitHub</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+    
+    <!-- Load Konami code asynchronously after page load -->
+    <script>
+    // Load non-critical CSS asynchronously
+    document.addEventListener('DOMContentLoaded', function() {
+        const styles = document.querySelectorAll('link[rel="stylesheet"][media="print"]');
+        styles.forEach(style => {
+            style.media = 'all';
+        });
+        
+        // Load non-critical CSS
+        const style = document.createElement('link');
+        style.rel = 'stylesheet';
+        style.href = 'styles.css';
+        document.head.appendChild(style);
+    });
+    
+    // Main application code
+    (function() {
+        'use strict';
+        // Configuration
+        const PALETTES = ['default', 'green'];
+        let mediaQuery = null;
+        
+        // DOM Elements
+        const themeToggle = document.querySelector('.theme-toggle');
+        
+        // Core Functions
+        function getRandomPalette() {
+            try {
+                const savedPalette = localStorage.getItem('colorPalette');
+                if (savedPalette && PALETTES.includes(savedPalette)) {
+                    return savedPalette;
+                }
+                const randomPalette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+                localStorage.setItem('colorPalette', randomPalette);
+                return randomPalette;
+            } catch (e) {
+                console.error('Error getting random palette:', e);
+                return 'default';
+            }
+        }
+        
+        function applyPalette() {
+            try {
+                const palette = getRandomPalette();
+                if (palette !== 'default') {
+                    document.documentElement.setAttribute('data-palette', palette);
+                } else {
+                    document.documentElement.removeAttribute('data-palette');
+                }
+            } catch (e) {
+                console.error('Error applying palette:', e);
+                document.documentElement.removeAttribute('data-palette');
+            }
+        }
+        
+        function applyTheme(theme) {
+            const isDark = theme === 'dark';
+            
+            // Update UI
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.body.classList.add('dark-theme');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                document.body.classList.remove('dark-theme');
+            }
+            
+            // Update state
+            if (themeToggle) {
+                themeToggle.setAttribute('aria-pressed', isDark);
+            }
+            localStorage.setItem('theme', theme);
+            localStorage.setItem('auto-theme', 'false');
+        }
+        
+        function getCurrentTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const autoTheme = localStorage.getItem('auto-theme') !== 'false';
+            
+            if (savedTheme) {
+                return savedTheme;
+            }
+            return autoTheme && prefersDark ? 'dark' : 'light';
+        }
+        
+        // Event Handlers
+        function handleSystemThemeChange(e) {
+            if (localStorage.getItem('auto-theme') !== 'false') {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        }
+        
+        function toggleTheme() {
+            const currentTheme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        }
+        
+        // Initialization
+        function initThemeAndPalette() {
+            const isBFCache = document.documentElement.classList.contains('is-bfcache');
+            
+            // Apply theme
+            applyTheme(getCurrentTheme());
+            
+            // Apply palette on first load only
+            if (!isBFCache) {
+                applyPalette();
+            }
+            
+            // Set up theme toggle
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme, { passive: true });
+                themeToggle.setAttribute('aria-pressed', 
+                    document.body.classList.contains('dark-theme') ? 'true' : 'false'
+                );
+            }
+            
+            // Set up system theme change listener
+            mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            mediaQuery.addEventListener('change', handleSystemThemeChange);
+            
+            // Set current year
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        }
+        
+        // Cleanup
+        function cleanup() {
+            if (mediaQuery) {
+                mediaQuery.removeEventListener('change', handleSystemThemeChange);
+            }
+            if (themeToggle) {
+                themeToggle.removeEventListener('click', toggleTheme);
+            }
+        }
+        
+        // Initialize
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                initThemeAndPalette();
+                window.addEventListener('pagehide', cleanup, { once: true });
+            });
+        } else {
+            initThemeAndPalette();
+            window.addEventListener('pagehide', cleanup, { once: true });
+        }
+        
+        // Load non-critical CSS
+        (function loadCSS() {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'styles.css';
+            document.head.appendChild(link);
+        })();
+    })();
+    </script>
+    <!-- Konami code - loaded with requestIdleCallback to prevent LCP impact -->
+    <script>
+    // Only initialize after the page is fully loaded and idle
+    if (window.requestIdleCallback) {
+        window.requestIdleCallback(initKonami, { timeout: 2000 });
+    } else {
+        // Fallback for browsers that don't support requestIdleCallback
+        window.addEventListener('load', () => {
+            setTimeout(initKonami, 1000);
+        });
+    }
+
+    function initKonami() {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: monospace;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        `;
+        document.body.appendChild(notification);
+
+        function showNotification(text) {
+            requestAnimationFrame(() => {
+                notification.textContent = text;
+                notification.style.opacity = '1';
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                }, 2000);
+            });
+        }
+
+
+        // Konami code implementation
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+        let isActive = false;
+        let animationFrame = null;
+        let lastTime = 0;
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+        let colorIndex = 0;
+
+        function animateColors(timestamp) {
+            if (!lastTime) lastTime = timestamp;
+            const delta = timestamp - lastTime;
+            
+            if (delta > 100) { // Update every 100ms
+                document.documentElement.style.setProperty('--palette-primary', colors[colorIndex % colors.length]);
+                colorIndex++;
+                lastTime = timestamp;
+            }
+            
+            if (isActive) {
+                animationFrame = requestAnimationFrame(animateColors);
+            }
+        }
+
+        function handleKeyDown(e) {
+            if (isActive) return;
+            
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    isActive = true;
+                    document.body.classList.add('konami-mode');
+                    showNotification('🎉 +30 Lives! (Just kidding, but nice job!)');
+                    
+                    // Start color animation
+                    animationFrame = requestAnimationFrame(animateColors);
+                    
+                    // Reset after 5 seconds
+                    setTimeout(() => {
+                        isActive = false;
+                        document.body.classList.remove('konami-mode');
+                        document.documentElement.style.removeProperty('--palette-primary');
+                        if (animationFrame) {
+                            cancelAnimationFrame(animationFrame);
+                            animationFrame = null;
+                        }
+                    }, 5000);
+                    
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        }
+
+        // Use passive event listener for better scrolling performance
+        document.addEventListener('keydown', handleKeyDown, { passive: true });
+    }
+    </script>
+    <!-- Simple console message that only shows when console is opened -->
+    <script>
+    // This runs only when the console is opened
+    (function() {
+        // Only run in browser
+        if (typeof window === 'undefined') return;
+        
+        // Use a simple, reliable method to detect devtools
+        let lastConsoleTime = 0;
+        const showConsoleMessage = () => {
+            // Only show once per page load
+            const now = Date.now();
+            if (now - lastConsoleTime < 1000) return;
+            lastConsoleTime = now;
+            
+            // Clear any previous messages to avoid duplicates
+            console.clear();
+            
+            // Show the message
+            const style1 = 'background: #1e40af; color: white; padding: 4px 8px; border-radius: 4px 0 0 4px; font-weight: bold;';
+            const style2 = 'background: #3b82f6; color: white; padding: 4px 8px; border-radius: 0 4px 4px 0; font-weight: bold;';
+            
+            console.log('%cHello there! %c👋', style1, style2);
+            console.log('%cLooking for something interesting?', 'color: #6b7280; font-style: italic;');
+            console.log('%cTry the Konami code: ↑↑↓↓←→←→BA', 'color: #2563eb; font-weight: bold;');
+            console.log('%cOr check out the source on GitHub: https://github.com/shaneog/shaneog.github.io', 'color: #6b7280;');
+        };
+        
+        // Simple detection that only runs when console is likely opened
+        const checkDevTools = () => {
+            const devtools = /./;
+            devtools.toString = function() {
+                showConsoleMessage();
+                return '';
+            };
+            console.log('%c', devtools);
+        };
+        
+        // Only start checking after page load
+        if (document.readyState === 'loading') {
+            window.addEventListener('load', checkDevTools, { once: true });
+        } else {
+            checkDevTools();
+        }
+    })();
+    </script>
 </body>
 </html>
